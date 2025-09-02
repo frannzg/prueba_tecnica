@@ -4,7 +4,7 @@ Ejecutar el proyecto en modo desarrollo con npm run dev. Esto iniciará el servi
 
 Configurar un archivo .env en la raíz del proyecto con la URI de MongoDB y el puerto. 
 Por ejemplo:
-- MONGO_URI=<url_mia>
+- MONGO_URI="mongodb+srv://frangogoinfo17_db_user:edqiHoE09w9OnjCD@cluster0.goehxox.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 - PORT=3000
 
 Para esta prueba, el acceso a la base de datos está habilitado desde cualquier origen.
