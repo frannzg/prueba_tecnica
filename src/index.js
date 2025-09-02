@@ -20,7 +20,7 @@ async function conectarDB() {
     collection = db.collection("usuarios");
     console.log("Conectado a MongoDB Atlas");
 
-    // Montar rutas después de conexión
+    // Montar rutas despues de conexion
     app.use("/", rutas(collection));
   } catch (error) {
     console.error("Error conectando a MongoDB:", error);
@@ -31,7 +31,7 @@ async function conectarDB() {
 const PORT = process.env.PORT || 3000;
 conectarDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
   });
 });
 
