@@ -2,24 +2,36 @@ Instalar dependencias con npm install.
 
 Ejecutar el proyecto en modo desarrollo con npm run dev. Esto iniciará el servidor con recarga automática al hacer cambios.
 
-Configurar un archivo .env en la raíz del proyecto con la URI de MongoDB y el puerto. Por ejemplo:
-MONGO_URI=<tu_url>
-PORT=3000
+Configurar un archivo .env en la raíz del proyecto con la URI de MongoDB y el puerto. 
+Por ejemplo:
+- MONGO_URI=<url_mia>
+- PORT=3000
 
-Nota: Para esta prueba, el acceso a la base de datos está habilitado desde cualquier origen.
+Para esta prueba, el acceso a la base de datos está habilitado desde cualquier origen.
 
-Estructura del proyecto:
+- Estructura del proyecto:
 
-src/models/Usuario.js → Definición del modelo de usuario y esquema de la base de datos.
+   1.  index.js:
 
-src/services/UsuarioService.js → Lógica de negocio y reglas para los usuarios.
+        Configura Express con cors y json.
 
-src/controllers/UsuarioController.js → Rutas y manejo de peticiones HTTP.
+        Conecta a MongoDB Atlas (mi_base_datos.usuarios).
 
-src/index.js → Inicialización del servidor, conexión a MongoDB y montaje de rutas.
+        Monta las rutas de route.js.
 
-Notas importantes:
+        Arranca el servidor.
 
-Actualmente el proyecto se subió completo incluyendo node_modules y .vscode. Normalmente se excluyen estas carpetas usando .gitignore, porque node_modules puede ser muy pesado y se regenera automáticamente con npm install, y los archivos de editor no son necesarios en el repositorio. Esto evita problemas de compatibilidad y acelera la clonación del proyecto.
+   2.  route.js:
 
-Para desplegarlo en otra máquina o servidor: clonar el repositorio, ejecutar npm install, configurar el .env con la URI de MongoDB y el puerto, y ejecutar npm run dev.
+        Define endpoints CRUD de usuarios:
+
+        1. GET: http://localhost:3000 --> Mensaje de bienvenida.
+        2. GET: http://localhost:3000/usuarios --> Obtienes todos los usuarios.
+        3. GET: http://localhost:3000/usuarios?page=1&limit=5 --> Devuelve la primera página con 5 usuarios.
+        4. GET: http://localhost:3000/usuarios?page=1&limit=5&q=Prue&sort=name --> Devuelve los nombres que empiezen por ... = ("Prue")
+        5. POST: http://localhost:3000/usuarios --> Crear un usuario.
+        6. GET: http://localhost:3000/usuarios/68b6af1266b0802ec6e6ad98 --> Obtener un usuario por id.
+        7. PUT: http://localhost:3000/usuarios/68b6af1266b0802ec6e6ad98 --> Editar un usuario por id.
+        8. DELETE: http://localhost:3000/usuarios/68b6af1266b0802ec6e6ad98 --> Eliminar usuario por id.
+        9. GET: http://localhost:3000/usuarios/stats --> Obtener estadisticas.
+
